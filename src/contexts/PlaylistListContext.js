@@ -7,6 +7,7 @@ const PlaylistListContext = React.createContext({
     clearError: () => {},
     setPlaylistList: () => {},
 })
+
 export default PlaylistListContext
 
 export class PlaylistListProvider extends Component {

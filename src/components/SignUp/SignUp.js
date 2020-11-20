@@ -13,7 +13,6 @@ export default class SignUp extends Component {
     handleSubmit = (ev, auth) => {
         ev.preventDefault()
         const { user_name, password } = ev.target
-        console.log(user_name.value, password.value)
         const user = {
             user_name: user_name.value,
             password: password.value
@@ -25,9 +24,7 @@ export default class SignUp extends Component {
                 password.value = ''
                 AuthApiService.postSignin(user)
                     .then(res => {
-                        console.log('signup success')
                         auth.setToken(res.authToken)
-                        console.log(this.props)
                         this.props.onSignUpSuccess(res.authToken)
                     })
                     .catch(res => {

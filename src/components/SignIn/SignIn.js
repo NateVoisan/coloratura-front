@@ -26,7 +26,6 @@ export default class SignIn extends Component {
             })
             .catch(res => {
                 this.setState({ error: res.error })
-                console.log("an error has occurred ", res.error)
             })
     }
     render() {

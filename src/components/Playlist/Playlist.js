@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import LinkForm from '../LinkForm/LinkForm.js'
 import PlaylistItem from '../PlaylistItem/PlaylistItem.js'
 import YTMedia from '../YTMedia/YTMedia.js'
 import SCMedia from '../SCMedia/SCMedia.js'
@@ -10,37 +9,37 @@ import BCMedia from '../BCMedia/BCMedia.js'
 import PlaylistPage from '../../routes/PlaylistPage/PlaylistPage.js'
 
 export default class Playlist extends Component {
-  constructor() {
-    super();
-    this.state = {
-      link: '',
-      title: '',
-      artist: '',
-      tracks: [
-        {
-          id: '',
-          title: 'cranberry',
-          artist: 'scone',
-          service: 'soundcloud',
-          link: 'https://www.youtube.com/embed/HmfJqm9P7Ks'
-        },
-        {
-          id: '',
-          title: 'tea',
-          artist: 'sugar',
-          service: 'youtube',
-          link: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/913401445&color=%23ff5500&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true'
-        },
-        {
-          id: '',
-          title: 'thai',
-          artist: '',
-          service: 'soundcloud',
-          link: 'https://soundcloud.com/feelmybicep/bicep-atlas'
-        }],
-      selectedTrack: 0
-    }
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     link: '',
+  //     title: '',
+  //     artist: '',
+  //     tracks: [
+  //       {
+  //         id: '',
+  //         title: 'cranberry',
+  //         artist: 'scone',
+  //         service: 'soundcloud',
+  //         link: 'https://www.youtube.com/embed/HmfJqm9P7Ks'
+  //       },
+  //       {
+  //         id: '',
+  //         title: 'tea',
+  //         artist: 'sugar',
+  //         service: 'youtube',
+  //         link: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/913401445&color=%23ff5500&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true'
+  //       },
+  //       {
+  //         id: '',
+  //         title: 'thai',
+  //         artist: '',
+  //         service: 'soundcloud',
+  //         link: 'https://soundcloud.com/feelmybicep/bicep-atlas'
+  //       }],
+  //     selectedTrack: 0
+  //   }
+  // }
 
   static defaultProps = {
     id: '',
@@ -81,7 +80,7 @@ export default class Playlist extends Component {
         <PlaylistItem
           key={i}
           track={track}
-          remove={() => clearTrack(track.id)}
+          remove={() => clearTrack(this.track.id)}
           moveUp={() => changePlaces(i, -1)}
           moveDown={() => changePlaces(i, 1)}
         />);
@@ -93,49 +92,42 @@ export default class Playlist extends Component {
     )
   }
 
-  // handleRemoveTrack(pos) {
-  //   var tempTrackList = this.state.tracks;
-  //   tempTrackList.splice(pos, 1);
-  //   this.setState({ ...this.state, tracks: tempTrackList })
-  //   console.log(tempTrackList);
-  // }
-
   handleSubmitNewTrack = (ev) => {
     ev.preventDefault();
+    const { history } = this.props
     var newTrack = {
-      title: this.state.title,
-      artist: this.state.artist,
-      link: this.state.link
+      title: this.props.title,
+      artist: this.props.artist,
+      link: this.props.link
     }
 
-    // PlaylistApiService.postTrack(playlistId, newTrack.link)
-    //   .then((track) => {
-    //     history.push(`/playlist/${playlistId}}`)
-    //   })
-    //   .catch(res => {
-    //     this.setState({ error: res.error })
-    //   })
+    PlaylistApiService.postTrack(newTrack.link)
+      .then((play) => {
+        history.push(`/playlist/${play.id}}`)
+      })
+      .catch(res => {
+        this.setState({ error: res.error })
+      })
 
-    if (newTrack.link.includes('youtube')) {
-      newTrack.link = newTrack.link.replace('watch?v=', 'embed/')
-    }
+    // if (newTrack.link.includes('youtube')) {
+    //   newTrack.link = newTrack.link.replace('watch?v=', 'embed/')
+    // }
 
-    if (newTrack.link.includes('bitchute')) {
-      newTrack.link = newTrack.link.replace('video', 'embed')
-    }
+    // if (newTrack.link.includes('bitchute')) {
+    //   newTrack.link = newTrack.link.replace('video', 'embed')
+    // }
 
     if (newTrack.link != null) {
-      var tempTrackList = this.state.tracks;
+      var tempTrackList = this.props.tracks;
       tempTrackList.push(newTrack);
-      this.setState({ ...this.state, tracks: tempTrackList });
+      this.setState({ ...this.props, tracks: tempTrackList });
     }
   }
 
   handleChange = (ev) => {
     ev.preventDefault();
-    console.log(ev.target.name);
     var variable = ev.target.name;
-    this.setState({ ...this.state, [variable]: ev.target.value })
+    this.setState({ ...this.props, [variable]: ev.target.value })
   }
 
   render() {
@@ -165,7 +157,7 @@ export default class Playlist extends Component {
                       name='link'
                       id='link'
                       required
-                      value={this.state.link}
+                      value={this.props.link}
                       onChange={this.handleChange}
                     />
                     <label htmlFor="title"> Title </label>
@@ -173,7 +165,7 @@ export default class Playlist extends Component {
                       type="text"
                       name='title'
                       id='title'
-                      value={this.state.title}
+                      value={this.props.title}
                       onChange={this.handleChange}
                     />
                     <label htmlFor="artist"> Artist </label>
@@ -181,7 +173,7 @@ export default class Playlist extends Component {
                       type="text"
                       name='artist'
                       id='artist'
-                      value={this.state.artist}
+                      value={this.props.artist}
                       onChange={this.handleChange}
                     />
                     <Button type='submit'>Add</Button>

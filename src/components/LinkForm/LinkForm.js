@@ -12,53 +12,57 @@ export default class LinkForm extends Component {
         artist: ""
     }
 
-    // handleSubmit = ev => {
-    //     ev.preventDefault()
-    //     const { playlist } = this.context
-    //     const { link } = ev.target
-    //     PlaylistApiService.postTrack(playlist.id, link.value)
-    //         .then(this.context.addTrack)
-    //         .then(() => {
-    //             link.value = ''
-    //         })
-    //         .catch(this.context.setError)
-    // }
-
-    handleSubmit = ev => {
-        ev.preventDefault();
-        console.log("event ", ev);
-        this.props.handleSubmitNewTrack("name", "name", "name");
+    handleSubmit = event => {
+        console.log('should be submitting link')
+        event.preventDefault()
+        const { playlist } = this.context
+        const { link } = event.target
+        PlaylistApiService.postTrack(playlist.id, link.value)
+            .then(this.context.addTrack)
+            .then(() => {
+                link.value = ''
+            })
+            .catch(this.context.setError)
     }
+
+    // handleSubmit = ev => {
+    //     ev.preventDefault();
+    //     this.props.handleSubmitNewTrack("name", "name", "name");
+    // }
 
     render() {
         return (
-            <div>
-                <form className='add-link'>
-                    <div>
-                        <label htmlFor="first-name">Add link </label>
-                            <Input 
-                                type="text" 
-                                name='link' 
-                                placeholder='https://www.youtube.com' 
-                                id='link' 
+            <PlaylistContext.Consumer>
+                <div>
+                    <form className='add-link'>
+                        <div>
+                            <label htmlFor="first-name"
+                                onSubmit={(event) => this.handleSubmit(event)}
+                            >Add link </label>
+                            <Input
+                                type="text"
+                                name='link'
+                                placeholder='https://www.youtube.com'
+                                id='link'
                                 required
                             />
-                        <label htmlFor="first-name"> Title </label>
-                            <Input 
-                                type="text" 
-                                name='title' 
-                                id='title' 
+                            <label htmlFor="first-name"> Title </label>
+                            <Input
+                                type="text"
+                                name='title'
+                                id='title'
                             />
-                        <label htmlFor="first-name"> Artist </label>
-                            <Input 
-                                type="text" 
-                                name='artist' 
-                                id='artist' 
+                            <label htmlFor="first-name"> Artist </label>
+                            <Input
+                                type="text"
+                                name='artist'
+                                id='artist'
                             />
-                        <Button type='submit' onClick={this.handleSubmit}>Add</Button>
-                    </div>
-                </form>
-            </div>
+                            <Button type='submit'>Add</Button>
+                        </div>
+                    </form>
+                </div>
+            </PlaylistContext.Consumer>
         )
     }
 
