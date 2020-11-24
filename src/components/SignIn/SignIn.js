@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import TokenService from '../../services/token-service'
 import AuthApiService from '../../services/auth-api-service.js'
-import { Button, Input } from '../Utils/Utils'
+import { Button, Input, Required } from '../Utils/Utils'
 
 export default class SignIn extends Component {
     static defaultProps = {
@@ -39,7 +39,7 @@ export default class SignIn extends Component {
                             {error && <p className='red'>{error}</p>}
                         </div>
                         <div>
-                            <label htmlFor="signin-username">Username</label>
+                            <label htmlFor="signin-username">Username <Required /></label>
                             <Input 
                                 type="text" 
                                 name='user_name' 
@@ -47,7 +47,7 @@ export default class SignIn extends Component {
                                 required />
                         </div>
                         <div>
-                            <label htmlFor="signin-password">Password</label>
+                            <label htmlFor="signin-password">Password <Required /></label>
                             <Input 
                                 type="password" 
                                 name='password' 

@@ -17,7 +17,11 @@ export default class Header extends Component {
     renderSignOutLink(auth) {
         return (
             <div className='Header__signed-in'>
-                <Link onClick={() => this.handleSignOutClick(auth)} to='/'>Sign Out</Link>
+                <Link 
+                    onClick={() => this.handleSignOutClick(auth)} 
+                    to='/' 
+                    style={{textDecoration:'none'}}
+                    >Sign Out</Link>
             </div>
         )
     }
@@ -25,28 +29,45 @@ export default class Header extends Component {
     renderSignInLink() {
         return (
             <div className='Header__not-signed-in'>
-                <Link to='/signup'>Sign Up</Link>
+                <Link 
+                    to='/signup' 
+                    style={{textDecoration:'none'}}
+                    >Sign Up</Link>
                 <Hyph />
-                <Link to='/signin'>Sign In</Link>
+                <Link 
+                    to='/signin'
+                    style={{textDecoration:'none'}}
+                    >Sign In</Link>
             </div>
         )
+    }
+
+    renderHomeLink() {
+        return (
+            <h1>
+                <Link 
+                    to='/'
+                    style={{textDecoration:'none'}}>
+                        {' '}
+                        Coloratura
+                </Link>
+            </h1>)
     }
 
     render() {
         return (
             <AuthContext.Consumer>
                 {auth => (
+                    <header className='App__header'>
                     <nav className='Header'>
-                        <h1>
-                            <Link to='/'>
-                                {' '}
-                        Coloratura
-                    </Link>
-                        </h1>
+                        {this.props.location.pathname === '/' 
+                            ? null 
+                            : this.renderHomeLink()}
                         {auth.token
                             ? this.renderSignOutLink(auth)
                             : this.renderSignInLink()}
                     </nav>
+                    </header>
                 )}
             </AuthContext.Consumer>
         )

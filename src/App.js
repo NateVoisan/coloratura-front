@@ -1,19 +1,19 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
+// import PlaylistItem from './components/PlaylistItem/PlaylistItem.js';
+// import SignIn from './components/SignIn/SignIn.js';
+// import SignUp from './components/SignUp/SignUp.js';
+// import PrivateRoute from './components/Utils/PrivateRoute'
+// import PublicOnlyRoute from './components/Utils/PublicOnlyRoute'
+// import PlaylistPage from './routes/PlaylistPage/PlaylistPage'
+// import PlaylistListPage from './routes/PlaylistListPage/PlaylistListPage'
 import './App.css';
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Home from './components/Home/Home.js';
 import Playlist from './components/Playlist/Playlist.js';
 import CreatePlaylist from './components/CreatePlaylist/CreatePlaylist';
-import PlaylistItem from './components/PlaylistItem/PlaylistItem.js';
-import SignIn from './components/SignIn/SignIn.js';
-import SignUp from './components/SignUp/SignUp.js';
 import Header from './components/Header/Header';
-import PrivateRoute from './components/Utils/PrivateRoute'
-import PublicOnlyRoute from './components/Utils/PublicOnlyRoute'
-import PlaylistPage from './routes/PlaylistPage/PlaylistPage'
 import PlaylistList from './components/PlaylistList/PlaylistList'
-import PlaylistListPage from './routes/PlaylistListPage/PlaylistListPage'
 import SignUpPage from './routes/SignUpPage/SignUpPage'
 import SignInPage from './routes/SignInPage/SignInPage'
 import NotFoundPage from './routes/NotFoundPage/NotFoundPage'
@@ -43,10 +43,10 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    IdleService.unRegisterIdleResets()
-    TokenService.clearCallbackBeforeExpiry()
-  }
+  // componentDidMount() {
+  //   IdleService.unRegisterIdleResets()
+  //   TokenService.clearCallbackBeforeExpiry()
+  // }
 
   signoutFromIdle = () => {
     TokenService.clearAuthToken()
@@ -60,14 +60,13 @@ class App extends Component {
   }
 
   render() {
+    console.log("app location")
     return (
       <AuthProvider>
         <PlaylistListProvider>
           <PlaylistProvider>
             <div className='App'>
-              <header className='App__header'>
-                <Header />
-              </header>
+                <Route path="/" component={Header} />
               <main role="main">
                 <Switch>
                   <Route exact path="/" component={Home} />

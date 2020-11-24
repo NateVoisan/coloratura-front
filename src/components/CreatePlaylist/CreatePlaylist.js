@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PlaylistApiService from '../../services/playlist-api-service'
-import { Button, Input } from '../Utils/Utils'
+import { Button, Input, Required } from '../Utils/Utils'
 import AuthContext from '../../contexts/AuthContext'
 
 export default class CreatePlaylist extends Component {
@@ -35,7 +35,7 @@ export default class CreatePlaylist extends Component {
                             <h2>Create Playlist</h2>
                             <form className='signup-form' onSubmit={(event) => this.handleCreatePlaylist(event, auth)}>
                                 <div>
-                                    <label htmlFor="playlist_name">Name</label>
+                                    <label htmlFor="playlist_name">Name <Required /></label>
                                     <Input type="text" name='playlist_name' id='playlist_name' />
                                 </div>
                                 <Button 

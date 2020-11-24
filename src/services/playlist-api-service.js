@@ -38,7 +38,7 @@ const PlaylistApiService = {
                     : res.json()
             )
     },
-    postTrack(playlistId, link) {
+    postTrack(playlistId, link, title, artist) {
         return fetch(`${config.API_ENDPOINT}/tracks`, {
             method: 'POST',
             headers: {
@@ -47,7 +47,9 @@ const PlaylistApiService = {
             },
             body: JSON.stringify({
                 playlist_id: playlistId,
-                link
+                link,
+                title,
+                artist
             }),
         })
             .then(res =>

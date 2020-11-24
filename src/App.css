@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Open Sans",
-  sans-serif; 
-  font-size: 20px;
+  font-family: 'Julius Sans One', sans-serif;
+  font-weight: bolder;
+  font-size: 28px;
   color: white;
   text-align: center;
   line-height: 1.5;
@@ -15,45 +17,140 @@ body {
 nav,
 footer {
   padding: 1% 0;
-  background-color: #aaa;
+  background-color: #333333;
+}
+
+.App__header {
+  width: 100%;
+  height: 75px;
 }
 
 nav {
   position: fixed;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 0;
+  margin-bottom: 0;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10;
+  z-index: 0;
   color: black;
 }
 
-a a:link a:active a:visited {
+.Header__signed-in {
+  position: fixed;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
   color: black;
 }
 
-a:hover {
-  color: #555555;
+.Header__not-signed-in {
+  position: fixed;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  color: black;
 }
 
 header {
-  padding: 12% 0;
-  color: white;
+  padding: 75px 0px;
+  color: cyan;
+}
+
+a {
+  color: cyan;
+}
+
+a:link {
+  color: cyan;
+}
+
+a:active {
+  color: cyan;
+}
+
+a:visited {
+  color: cyan;
+}
+
+a:hover {
+  color: black;
 }
 
 section {
   min-height: 200px;
-  padding: 6% 0;
+  width: initial;
+  padding: 0;
   background-color: #555555;
   color: white;
 }
 
-section:nth-child(even) {
+/* section:nth-child(even) {
   background-color: #777777;
   color: white;
+} */
+
+.homepage {
+  background-color:#333333;
+  color: cyan;
+  padding: 10px;
+}
+
+.homeabout {
+  background-color: #555555;
+  font-size: 22px;
+  justify-content: center;
+  text-align: center;
+  margin: 10px;
+  margin-right: 10%;
+  margin-left: 10%;
+  padding: 10px;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.add-link {
+  background-color: #333333;
+}
+
+fieldset {
+  width: initial;
+  margin: 20px;
+  margin-right: 20%;
+  margin-left: 20%;
+  padding: 20px;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+footer {
+  background-color: #333333;
+  color: black;
+  padding: 0;
 }
 
 button {
+  font-family: 'Julius Sans One', sans-serif;
+  font-weight: bolder;
   padding: 10px;
   width: 100px;
   margin: 10px;
+  background-color: #333333;
+  color: cyan;
+}
+
+input {
+  margin: 0 auto;
 }

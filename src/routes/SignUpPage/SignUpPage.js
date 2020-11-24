@@ -11,15 +11,13 @@ export default class SignUpPage extends Component {
     }
 
     handleSignUpSuccess = (auth, token) => {
-        console.log(auth, token)
-        console.log('handlesignupsuccess working')
         const { history } = this.props
         auth.setToken(token)
         history.push('/playlists')
     }
 
     render() {
-        console.log(this.props)
+        console.log("signuip props", this.props)
         return (
             <AuthContext.Consumer>
                 {(auth) => (

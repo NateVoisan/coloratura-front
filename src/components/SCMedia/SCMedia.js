@@ -12,6 +12,7 @@ export default class SCMedia extends Component {
                     scrolling="no" 
                     frameBorder="no" 
                     allow="autoplay"
+                    title="Soundcloud"
                     src={this.props.track.link}>
                 </iframe>
             </div>
