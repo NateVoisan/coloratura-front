@@ -3,8 +3,10 @@ import TokenService from '../services/token-service'
 import IdleService from './idle-service'
 
 const AuthApiService = {
+
+  // Handle posting the sign in information to the server and checking credentials
+
   postSignin({user_name, password}) {
-    console.log(user_name, password)
     return fetch(`${config.API_ENDPOINT}/auth/signin`, {
       method: 'POST',
       headers: {
@@ -18,7 +20,6 @@ const AuthApiService = {
           : res.json()
       )
       .then(res => {
-        console.log('saving token')
         TokenService.saveAuthToken(res.authToken)
         IdleService.registerIdleTimerResets()
         TokenService.queueCallbackBeforeExpiry(() => {
@@ -27,6 +28,8 @@ const AuthApiService = {
         return res
       })
   },
+
+  // Post the user's data on new user sign up
 
   postUser(user) {
     return fetch(`${config.API_ENDPOINT}/users`, {
@@ -42,6 +45,8 @@ const AuthApiService = {
           : res.json()
       )
   },
+
+  // Post refresh token when expired
 
   postRefreshToken() {
     return fetch(`${config.API_ENDPOINT}/refresh`, {
@@ -63,7 +68,6 @@ const AuthApiService = {
         return res
       })
       .catch(err => {
-        console.log('refresh token request error')
         console.log(err)
       })
   }

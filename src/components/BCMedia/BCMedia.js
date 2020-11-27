@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 
 export default class BCMedia extends Component {
 
+    // Grab the url, change part of it to be viable for embed code,
+    // push the new url into the iframe embed code
+
     urlFix = () => {
         return this.props.track.link.replace(/video/,'embed')
     }
@@ -10,15 +13,6 @@ export default class BCMedia extends Component {
         console.log(this.props.track.link.replace(/video/,'embed'))
         return (
             <div className="BCMedia">
-                {/* <iframe
-                    width="640"
-                    height="360"
-                    scrolling="no"
-                    frameborder="0"
-                    style="border: none;"
-                    title="Bitchute"
-                    src={this.urlFix()}>
-                </iframe> */}
                 <iframe 
                     width="640"
                     height="360"

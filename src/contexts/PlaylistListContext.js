@@ -10,6 +10,8 @@ const PlaylistListContext = React.createContext({
 
 export default PlaylistListContext
 
+// Numerous simple functions being used for users, playlists, tracks, errors, etc
+
 export class PlaylistListProvider extends Component {
     state = {
         playlistList: [],

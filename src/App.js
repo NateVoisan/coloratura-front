@@ -1,14 +1,6 @@
-// import logo from './logo.svg';
-// import PlaylistItem from './components/PlaylistItem/PlaylistItem.js';
-// import SignIn from './components/SignIn/SignIn.js';
-// import SignUp from './components/SignUp/SignUp.js';
-// import PrivateRoute from './components/Utils/PrivateRoute'
-// import PublicOnlyRoute from './components/Utils/PublicOnlyRoute'
-// import PlaylistPage from './routes/PlaylistPage/PlaylistPage'
-// import PlaylistListPage from './routes/PlaylistListPage/PlaylistListPage'
 import './App.css';
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/Home/Home.js';
 import Playlist from './components/Playlist/Playlist.js';
 import CreatePlaylist from './components/CreatePlaylist/CreatePlaylist';
@@ -43,11 +35,6 @@ class App extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   IdleService.unRegisterIdleResets()
-  //   TokenService.clearCallbackBeforeExpiry()
-  // }
-
   signoutFromIdle = () => {
     TokenService.clearAuthToken()
     TokenService.clearCallbackBeforeExpiry()
@@ -60,7 +47,6 @@ class App extends Component {
   }
 
   render() {
-    console.log("app location")
     return (
       <AuthProvider>
         <PlaylistListProvider>

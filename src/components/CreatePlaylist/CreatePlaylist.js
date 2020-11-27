@@ -4,11 +4,9 @@ import { Button, Input, Required } from '../Utils/Utils'
 import AuthContext from '../../contexts/AuthContext'
 
 export default class CreatePlaylist extends Component {
-    // static defaultProps = {
-    //     history: {
-    //         push: () => { },
-    //     },
-    // }
+
+    // Grab the information from the input form and send it to the API service
+    // that posts that data into the database
 
     handleCreatePlaylist = (event, auth) => {
         event.preventDefault()
@@ -36,7 +34,7 @@ export default class CreatePlaylist extends Component {
                             <form className='signup-form' onSubmit={(event) => this.handleCreatePlaylist(event, auth)}>
                                 <div>
                                     <label htmlFor="playlist_name">Name <Required /></label>
-                                    <Input type="text" name='playlist_name' id='playlist_name' />
+                                    <Input required type="text" name='playlist_name' id='playlist_name' />
                                 </div>
                                 <Button 
                                     type='submit'

@@ -1,70 +1,159 @@
-# Getting Started with Create React App
+# Coloratura
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Live Link:
 
-In the project directory, you can run:
+https://coloratura-front.vercel.app/
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Github Repositories
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Client --- https://github.com/NateVoisan/coloratura-front
+Server --- https://github.com/NateVoisan/coloratura-back
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Summary
 
-### `npm run build`
+The purpose of this application is to allow users to create an account then create a playlist and add tracks to it. When adding tracks the user is asked to provide a link, title, and artist. The page will populate with the given data and show a container with the tracks information. At the top of the page a media player will appear correlating to the first track in the list. The media can be changed by simply clicking on a different track container. If the media type is supported(Youtube or Bitchute at the moment) it will show the media player, however, if the media type is not supported yet(Soundcloud, Spotify, and Vimeo are coming soon) it will display an error message. All user, playlist and track data are saved into a database for use later on. Overall this application is used to curate your own playlist using many different types of media sites and allowing the user to store their playlist in one easy to use place.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Screenshots
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Demo Account Details:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Username: testuser01
+Password: testuser01
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Functionality
 
-## Learn More
+- Users are able to create an account
+- Registered users are able to sign in and out of their account anytime
+- Signed in users are able to create and save playlists
+- Signed in users are able to create and save tracks to playlists
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Technology
 
-### Code Splitting
+#### Front End
+- React
+    - HTML5
+    - CSS3
+    - JavaScript ES6
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Testing
+    - Jest
 
-### Analyzing the Bundle Size
+- Production
+    - Deployed via Vercel
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+#### Back End
+- Node and Express
+    - Authentication via JWT
+    - RESTful API
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Testing
+    - Supertest
+    - Mocha and Chai
 
-### Advanced Configuration
+- Database
+    - Postgres
+    - Knex.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Production
+    - Deployed via Heroku
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Component Structure
 
-### `npm run build` fails to minify
+- index.js
+    - App.js
+        - Home.js
+        - Header.js
+            - SignUp.js
+            - SignIn.js
+        - PlaylistList.js
+            - CreatePlaylist.js
+        - Playlist.js
+            - Playlistitem.js
+            - YTMedia.js
+            - BCMedia.js
+        - Utils.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Database Structure
+
+- Users
+    - id
+    - user_name
+    - password
+
+- Playlists
+    - id
+    - name
+    - creator
+
+- Tracks
+    - id
+    - link
+    - title
+    - artist
+    - playlist_id
+
+
+### API Documentation
+
+/auth
+└──GET
+    └──/:id
+└──POST
+    ├──/
+    ├──/refresh
+    ├──/signin
+/playlists
+└──GET
+    ├──/
+    ├──/:playlist_id
+    ├──/:playlist_id/tracks
+└──POST
+    ├──/create/new
+└──DELETE
+    ├──/deleteplaylist/:playlist_id
+    ├──/deletetrack/:trackId
+/users
+└──GET
+    ├──/:id
+└──POST
+    ├──/
+/tracks
+└──POST
+    ├──/
+
+
+### Development Roadmap
+
+This is v1.0 of the app, but more functionality wil be added in the future:
+- Ability to edit track position in playlist
+- Supports all media types
+- Plays through media links and jumps to the next one in the list when finished
+- Login authentication for services such as Spotify
+- Changes to the style layout of each page
+
+
+### How to run
+
+Use command line to navigate into the project folder and run the following commands
+
+- Local React Scripts
+    - npm install --- installs the react project
+    - npm start --- runs React on port 3000
+    - npm run test --- runs tests
+
+- Local Node Scripts
+    - npm install --- installs the node project
+    - npm run migrate --- migrates the database
+    - npm run dev --- runs the Node server on port 8000
+    - npm run test --- runs tests

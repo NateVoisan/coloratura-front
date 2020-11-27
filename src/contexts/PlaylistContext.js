@@ -23,6 +23,8 @@ const PlaylistContext = React.createContext({
 
 export default PlaylistContext
 
+// Numerous simple functions being used for users, playlists, tracks, errors, etc
+
 export class PlaylistProvider extends Component {
     state = {
         playlist: nullPlaylist,
@@ -66,7 +68,6 @@ export class PlaylistProvider extends Component {
     }
 
     changePlaces(pos, dir) {
-        console.log(pos, " ", dir, " changing places");
         var tempTrackList = this.state.tracks;
         var tempTrack = this.state.tracks[pos];
         tempTrackList[pos] = this.state.tracks[pos + dir];

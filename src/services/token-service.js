@@ -4,6 +4,8 @@ import jwtDecode from 'jwt-decode'
 let _timeoutId
 const _TEN_SECONDS_IN_MS = 1000
 
+// Handle a litany of token services for the user
+
 const TokenService = {
   saveAuthToken(token) {
     window.localStorage.setItem(config.TOKEN_KEY, token)
@@ -12,7 +14,6 @@ const TokenService = {
     return window.localStorage.getItem(config.TOKEN_KEY)
   },
   clearAuthToken() {
-    console.info('clearing the auth token')
     window.localStorage.removeItem(config.TOKEN_KEY)
   },
   hasAuthToken() {

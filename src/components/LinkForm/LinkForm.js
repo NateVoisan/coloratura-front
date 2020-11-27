@@ -12,6 +12,8 @@ export default class LinkForm extends Component {
         artist: ""
     }
 
+    // Handle posting a track and its data to the database and props
+
     handleSubmit = event => {
         console.log('should be submitting link')
         event.preventDefault()
@@ -25,11 +27,6 @@ export default class LinkForm extends Component {
             .catch(this.context.setError)
     }
 
-    // handleSubmit = ev => {
-    //     ev.preventDefault();
-    //     this.props.handleSubmitNewTrack("name", "name", "name");
-    // }
-
     render() {
         return (
             <PlaylistContext.Consumer>
@@ -42,7 +39,6 @@ export default class LinkForm extends Component {
                             <Input
                                 type="text"
                                 name='link'
-                                placeholder='https://www.youtube.com'
                                 id='link'
                                 required
                             />

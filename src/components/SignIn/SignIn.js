@@ -10,6 +10,8 @@ export default class SignIn extends Component {
 
     state = { error: null }
 
+    // Handle submitting user credentials and using JWT to check their validity
+
     handleSubmitJwtAuth = ev => {
         ev.preventDefault()
         this.setState({ error: null })
@@ -28,6 +30,7 @@ export default class SignIn extends Component {
                 this.setState({ error: res.error })
             })
     }
+
     render() {
         const { error } = this.state
         return (

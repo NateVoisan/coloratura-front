@@ -14,15 +14,18 @@ export default class PlaylistList extends Component {
             playlists: []
         }
     }
+    
+    // Get playlists for the currently signed in user
 
     componentDidMount() {
-        // this.context.clearError()
         PlaylistApiService.getPlaylists()
             .then((playlists) => {
                 this.setState({ ...this.state, playlists })
             })
             .catch(e => console.log(e))
     }
+
+    // Delete the playlist from the database and state
 
     onDelete = (id) => {
         fetch(`${config.API_ENDPOINT}/playlists/deleteplaylist/${id}`, {
@@ -39,6 +42,8 @@ export default class PlaylistList extends Component {
             .catch(err => { console.log(err) })
     }
 
+    // Template for rendering a playlist in a contained component
+
     renderPlaylists() {
         return this.state.playlists.map(playlist =>
             <fieldset key={playlist.id}>
@@ -46,11 +51,11 @@ export default class PlaylistList extends Component {
                     <Link
                         to={`/playlist/${playlist.id}`}
                         key={playlist.id}
-                        playlist={playlist}
+                        // playlist={playlist}
                         style={{ textDecoration: 'none' }}>
                         <h2>{playlist.name}</h2>
                     </Link>
-                    <button type='delete' onClick={() => this.onDelete(playlist.id)}>Delete</button>
+                    <button onClick={() => this.onDelete(playlist.id)}>Delete</button>
                 </div></fieldset>)
     }
 

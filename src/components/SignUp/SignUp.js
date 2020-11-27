@@ -10,6 +10,8 @@ export default class SignUp extends Component {
 
     state = { error: null }
 
+    // Handle submitting a new user's data into the database with tokens
+
     handleSubmit = (ev, auth) => {
         ev.preventDefault()
         const { user_name, password } = ev.target

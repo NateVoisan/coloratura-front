@@ -7,12 +7,17 @@ import AuthContext from '../../contexts/AuthContext'
 // import './Header.css'
 
 export default class Header extends Component {
+
+    // On sign out click handle clearing token
+
     handleSignOutClick = (auth) => {
         auth.setToken()
         TokenService.clearAuthToken()
         TokenService.clearCallbackBeforeExpiry()
         IdleService.unRegisterIdleResets()
     }
+
+    // Render sign out link when already signed in
 
     renderSignOutLink(auth) {
         return (
@@ -25,6 +30,8 @@ export default class Header extends Component {
             </div>
         )
     }
+
+    // Render sign up and sign in links when not signed in
 
     renderSignInLink() {
         return (
@@ -41,6 +48,8 @@ export default class Header extends Component {
             </div>
         )
     }
+
+    // Render home link only when not on home page already
 
     renderHomeLink() {
         return (

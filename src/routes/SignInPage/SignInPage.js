@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import SignIn from '../../components/SignIn/SignIn'
 import { Section } from '../../components/Utils/Utils'
-import AuthContext, { AuthProvider } from '../../contexts/AuthContext'
+import AuthContext from '../../contexts/AuthContext'
 
 export default class SignInPage extends Component {
     static defaultProps = {
@@ -11,11 +11,12 @@ export default class SignInPage extends Component {
         },
     }
 
+    // Handle receiving the correct auth token for sign in success
+
     handleSignInSuccess = (auth, token) => {
         const { location, history } = this.props
         const destination = (location.state || {}).from || '/'
         history.push(destination)
-        console.log(destination)
         auth.setToken(token)
     }
 

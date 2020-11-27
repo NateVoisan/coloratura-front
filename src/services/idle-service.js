@@ -3,6 +3,8 @@ let _idleCallback = null
 let _notIdleEvents = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart']
 let _EIGHT_HOURS_IN_MS = 8 * 60 * 60 * 1000
 
+// Handle refreshing user when idle for 8 hours
+
 const IdleService = {
     setIdleCallback(idleCallback) {
         _idleCallback = idleCallback

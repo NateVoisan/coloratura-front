@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import TokenService from '../services/token-service';
 
+// Using context get the authorization token
+
 const AuthContext = React.createContext({
     token: TokenService.getAuthToken(),
     setToken: () => {}
@@ -14,7 +16,6 @@ export class AuthProvider extends Component {
     };
 
     setToken = token => {
-        console.log(token)
         this.setState({ token })
     }
 

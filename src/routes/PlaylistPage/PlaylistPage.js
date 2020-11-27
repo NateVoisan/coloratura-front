@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import PlaylistContext, { nullPlaylist } from '../../contexts/PlaylistContext'
 import PlaylistApiService from '../../services/playlist-api-service'
-import PlaylistItem from '../../components/PlaylistItem/PlaylistItem'
-import { NiceDate, Hyph, Section } from '../../components/Utils/Utils'
+import { Hyph, Section } from '../../components/Utils/Utils'
 
 export default class PlaylistPage extends Component {
     static defaultProps = {
@@ -11,11 +10,11 @@ export default class PlaylistPage extends Component {
 
     static contextType = PlaylistContext
 
+    // Get playlist and tracks for the particular user on did mount and clear context on unmount
+
     componentDidMount() {
-        console.log(this.props)
         const { playlistId } = this.props.match.params
         this.context.clearError()
-        console.log(playlistId)
         PlaylistApiService.getPlaylist(playlistId)
             .then(this.context.setPlaylist)
             .catch(this.context.setError)
@@ -41,7 +40,6 @@ export default class PlaylistPage extends Component {
             </p>
             <PlaylistContent playlist={playlist} />
             <PlaylistTracks tracks={tracks} />
-            {/* <PlaylistItem track={track}/> */}
         </>
     }
 

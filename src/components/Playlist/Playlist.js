@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PlaylistItem from '../PlaylistItem/PlaylistItem.js'
 import YTMedia from '../YTMedia/YTMedia.js'
-// import SCMedia from '../SCMedia/SCMedia.js'
 import { Input, Button,Required } from '../Utils/Utils'
 import PlaylistApiService from '../../services/playlist-api-service.js'
 import BCMedia from '../BCMedia/BCMedia.js'
@@ -34,6 +33,8 @@ export default class Playlist extends Component {
   // (replace iframe link = {this.props.selectedTrack.link}) (autoplay)
   // handle (next track) (determine youtube or soundcloud and switch embed)
 
+  // Get the data correlating to the selected playlist on did mount
+
   componentDidMount() {
     PlaylistApiService.getPlaylist(this.props.match.params.playlistId)
       .then((playlist) => {
@@ -43,6 +44,8 @@ export default class Playlist extends Component {
       .catch(e => console.log("error catch ", e))
   }
 
+  // Get the tracks for the selected playlist
+
   getTracks() {
     PlaylistApiService.getPlaylistTracks(this.props.match.params.playlistId)
       .then((tracks) => {
@@ -50,6 +53,8 @@ export default class Playlist extends Component {
       })
       .catch(e => console.log("error catch ", e))
   }
+
+  // Render the correlating media type for the link
 
   renderMedia() {
     let service = ""
@@ -63,7 +68,6 @@ export default class Playlist extends Component {
         service = "nosupport"
       }
     }
-    console.log('rendermedia', service)
     switch(service) {
       case "youtube":
         return <YTMedia track={currentTrack} />
@@ -76,13 +80,15 @@ export default class Playlist extends Component {
     }
   }
 
+  // Give selected track a number to be used in state
+
   selectTrack(trackNumber) {
     this.setState({ selectedTrack: trackNumber})
-    console.log("selecting track ", trackNumber)
   }
 
+  // Handle deleting a track and its data from both the state and the database
+
   deleteTrack = (id) => {
-    console.log('delete track ', id)
     let newTracks = [...this.state.tracks]
     newTracks = newTracks.filter(track => track.id !== id)
     fetch(`${config.API_ENDPOINT}/playlists/deletetrack/${id}`, {
@@ -93,10 +99,11 @@ export default class Playlist extends Component {
     })
       .then(() => {
         this.setState({ tracks: newTracks })
-        console.log(newTracks)
       })
       .catch(err => console.log(err))
   }
+
+  // Render the individual tracks data into a list item component
 
   renderTracks() {
     var allTracks = [];
@@ -117,6 +124,8 @@ export default class Playlist extends Component {
       </div>
     )
   }
+
+  // Handle submitting a new tracks data to both the state and the database
 
   handleSubmitNewTrack = (ev) => {
     ev.preventDefault();

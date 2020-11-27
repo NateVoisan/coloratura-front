@@ -2,13 +2,12 @@ import React, { Component } from 'react'
 
 export default class YTMedia extends Component {
 
+    // Grab the url, change part of it to be viable for embed code,
+    // push the new url into the iframe embed code
+
     urlFix = () => {
         return this.props.track.link.replace(/watch\?v=/,'embed/')
     }
-
-    // let url='https://www.youtube.com/watch?v=412PXDDP31g';
-    // let parsed = url.replace(/watch\?v=/,'embed/');
-    // "https://www.youtube.com/embed/412PXDDP31g"
     
     render() {
         return (
@@ -20,8 +19,6 @@ export default class YTMedia extends Component {
                     title="Youtube"
                     src={this.urlFix()}
                     frameBorder="0"
-                    // allow="accelerometer; autoplay; clipboard-write; 
-                    //        encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen>
                 </iframe>
             </div>

@@ -7,6 +7,8 @@ import { Section } from '../../components/Utils/Utils'
 export default class PlaylistListPage extends Component {
     static contextType = PlaylistListContext
 
+    // Get playlist for the particular user on did mount
+
     componentDidMount() {
         this.context.clearError()
         PlaylistApiService.getPlaylists()

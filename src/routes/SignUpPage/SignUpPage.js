@@ -10,6 +10,8 @@ export default class SignUpPage extends Component {
         },
     }
 
+    // Handle receiving the correct auth token for sign in success
+
     handleSignUpSuccess = (auth, token) => {
         const { history } = this.props
         auth.setToken(token)
@@ -17,7 +19,6 @@ export default class SignUpPage extends Component {
     }
 
     render() {
-        console.log("signuip props", this.props)
         return (
             <AuthContext.Consumer>
                 {(auth) => (
