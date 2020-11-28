@@ -12,6 +12,7 @@ body {
   text-align: center;
   line-height: 1.5;
   background-color: #333333;
+  padding-top: 20px;
 }
 
 nav,
@@ -23,6 +24,12 @@ footer {
 .App__header {
   width: 100%;
   height: 75px;
+}
+
+.headerhome {
+  color: cyan;
+  padding: 0;
+  margin: 0;
 }
 
 nav {
@@ -39,7 +46,7 @@ nav {
 }
 
 .Header__signed-in {
-  position: fixed;
+  /* position: fixed; */
   justify-content: center;
   text-align: center;
   padding-bottom: 0;
@@ -52,7 +59,7 @@ nav {
 }
 
 .Header__not-signed-in {
-  position: fixed;
+  /* position: fixed; */
   justify-content: center;
   text-align: center;
   padding-bottom: 0;
@@ -97,6 +104,14 @@ section {
   color: white;
 }
 
+.SignInPage {
+  margin-top: 80px;
+}
+
+.SignUpPage {
+  margin-top: 80px;
+}
+
 .homepage {
   background-color:#333333;
   color: cyan;
@@ -105,7 +120,7 @@ section {
 
 .homeabout {
   background-color: #555555;
-  font-size: 22px;
+  font-size: 14px;
   justify-content: center;
   text-align: center;
   margin: 10px;
@@ -118,7 +133,7 @@ section {
 
 .demo {
   background-color: #555555;
-  font-size: 22px;
+  font-size: 16px;
   justify-content: center;
   text-align: center;
   margin: 10px;
@@ -135,16 +150,14 @@ section {
 
 fieldset {
   width: initial;
-  margin: 50px;
-  margin-right: 20%;
-  margin-left: 20%;
-  padding: 20px;
-  padding-left: 20%;
-  padding-right: 20%;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 footer {
   background-color: #333333;
+  font-size: 16px;
   color: white;
   padding: 0;
 }
@@ -167,4 +180,82 @@ input {
 .YTMedia {
   width: 100%;
   height: 100%;
+}
+
+h1 {
+  font-size: 42px;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+.slogan {
+  font-size: 18px;
+}
+
+.description {
+  font-size: 12px;
+}
+
+.YTMedia iframe {
+  width: 300px;
+  height: 300px;
+}
+
+.BCMedia iframe {
+  width: 300px;
+  height: 300px;
+}
+
+@media only screen and (min-width: 768px) {
+  h1 {
+    font-size: 64px;
+  }
+
+  .slogan {
+    font-size: 28px;
+  }
+
+  .description {
+    font-size: 22px;
+  }
+
+  .demo {
+    font-size: 24px;
+  }
+
+  .homeabout {
+    font-size: 20px;
+  }
+
+  footer {
+    font-size: 18px;
+  }
+
+  .YTMedia iframe {
+    width: 1000px;
+    height: 600px;
+  }
+
+  .BCMedia iframe {
+    width: 600px;
+    height: 400px;
+  }
+
+  body {
+    padding-top: 80px;
+  }
+
+  fieldset {
+    margin: 100px;
+    padding: 20px;
+  }
+
+  .Input {
+    font-size: 24px;
+    max-width: 45%;
+  }
 }

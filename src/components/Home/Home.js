@@ -8,8 +8,9 @@ const Home = () => {
             {(auth) => (
                 <div>
                     <header role="banner" className='homepage'>
-                        <h1>Coloratura</h1>
-                        <p>Playlists for anything.</p>
+                        <p className="description">: elaborate embellishment in vocal music
+broadly : music with ornate figuration</p>
+                        <p className="slogan">Playlists for anything.</p>
 
                         {auth.token
                             ? <React.Fragment><Link to="/playlists"><button>Playlists</button></Link>
@@ -18,11 +19,11 @@ const Home = () => {
 
                     </header>
 
-                    <section className="demo">
+                    <div className="demo">
                         <p>Demo Account:</p>
                         <p>Username - testuser01</p>
                         <p>Password - testuser01</p>
-                    </section>
+                    </div>
 
                     <section className='homeabout'>
                         <p>Sometimes we may want to listen to multiple songs, videos, or podcasts in a row while we are working, playing video games, or relaxing.
@@ -33,7 +34,7 @@ const Home = () => {
                     </section>
 
                     <footer className='footer'>
-                        <p>© Coloratura</p>
+                        © Coloratura
                     </footer>
                 </div>
             )}

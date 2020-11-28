@@ -14,8 +14,8 @@ export default class YTMedia extends Component {
             <div>
             <div className="YTMedia">
                 <iframe 
-                    width="560" 
-                    height="315"
+                    // width="300" 
+                    // height="300"
                     title="Youtube"
                     src={this.urlFix()}
                     frameBorder="0"

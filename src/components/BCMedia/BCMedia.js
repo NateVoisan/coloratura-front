@@ -14,9 +14,10 @@ export default class BCMedia extends Component {
         return (
             <div className="BCMedia">
                 <iframe 
-                    width="640"
-                    height="360"
+                    // width="300"
+                    // height="300"
                     title='Bitchute'
+                    frameBorder='none'
                     src={this.urlFix()}>
                 </iframe>
             </div>

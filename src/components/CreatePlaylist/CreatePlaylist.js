@@ -6,7 +6,7 @@ import AuthContext from '../../contexts/AuthContext'
 export default class CreatePlaylist extends Component {
 
     // Grab the information from the input form and send it to the API service
-    // that posts that data into the database
+    // that posts that data into the d
 
     handleCreatePlaylist = (event, auth) => {
         event.preventDefault()
@@ -36,11 +36,14 @@ export default class CreatePlaylist extends Component {
                                     <label htmlFor="playlist_name">Name <Required /></label>
                                     <Input required type="text" name='playlist_name' id='playlist_name' />
                                 </div>
-                                <Button 
+                                <Button
                                     type='submit'
-                                    >Submit</Button>
+                                >Submit</Button>
                             </form>
                         </section>
+                        <footer className='footer'>
+                            © Coloratura
+                    </footer>
                     </div>
                 )}
             </AuthContext.Consumer>

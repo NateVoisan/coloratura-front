@@ -46,7 +46,7 @@ export default class PlaylistList extends Component {
 
     renderPlaylists() {
         return this.state.playlists.map(playlist =>
-            <fieldset key={playlist.id}>
+            <fieldset classname="playlist-container" key={playlist.id}>
                 <div key={playlist.id}>
                     <Link
                         to={`/playlist/${playlist.id}`}
@@ -71,7 +71,7 @@ export default class PlaylistList extends Component {
                     <Link to="/create"><button>Create</button></Link>
                 </div>
                 <footer className='footer'>
-                    <p>© Coloratura</p>
+                    © Coloratura
                 </footer>
             </PlaylistContext.Provider>
         )

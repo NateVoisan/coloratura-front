@@ -29,10 +29,6 @@ export default class Playlist extends Component {
     name: ''
   }
 
-  // handle (arrow movement) (skip -forward/backward) (delete track) 
-  // (replace iframe link = {this.props.selectedTrack.link}) (autoplay)
-  // handle (next track) (determine youtube or soundcloud and switch embed)
-
   // Get the data correlating to the selected playlist on did mount
 
   componentDidMount() {
@@ -207,7 +203,7 @@ export default class Playlist extends Component {
           </form>
         </div>
         <footer className='footer'>
-          <p>© Coloratura</p>
+          © Coloratura
         </footer>
       </div>
     )

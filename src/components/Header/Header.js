@@ -70,7 +70,7 @@ export default class Header extends Component {
                     <header className='App__header'>
                     <nav className='Header'>
                         {this.props.location.pathname === '/' 
-                            ? null 
+                            ? <h1 className="headerhome">Coloratura</h1> 
                             : this.renderHomeLink()}
                         {auth.token
                             ? this.renderSignOutLink(auth)
