@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import PlaylistItem from '../PlaylistItem/PlaylistItem.js'
-import YTMedia from '../YTMedia/YTMedia.js'
-import { Input, Button,Required } from '../Utils/Utils'
-import PlaylistApiService from '../../services/playlist-api-service.js'
-import BCMedia from '../BCMedia/BCMedia.js'
-import config from '../../config'
-import TokenService from '../../services/token-service'
+import React, { Component } from 'react';
+import PlaylistItem from '../PlaylistItem/PlaylistItem.js';
+import YTMedia from '../YTMedia/YTMedia.js';
+import { Input, Button,Required } from '../Utils/Utils';
+import PlaylistApiService from '../../services/playlist-api-service.js';
+import BCMedia from '../BCMedia/BCMedia.js';
+import config from '../../config';
+import TokenService from '../../services/token-service';
 
 export default class Playlist extends Component {
   constructor() {
@@ -21,15 +21,13 @@ export default class Playlist extends Component {
       artist: '',
       tracks: [],
       selectedTrack: 0
-    }
-  }
+    };
+  };
 
   static defaultProps = {
     id: '',
     name: ''
-  }
-
-  // Get the data correlating to the selected playlist on did mount
+  };
 
   componentDidMount() {
     PlaylistApiService.getPlaylist(this.props.match.params.playlistId)
@@ -37,24 +35,22 @@ export default class Playlist extends Component {
         this.getTracks()
         this.setState({ playlist })
       })
-      .catch(e => console.log("error catch ", e))
-  }
-
-  // Get the tracks for the selected playlist
+      .catch(e => console.log("error catch ", e));
+  };
 
   getTracks() {
     PlaylistApiService.getPlaylistTracks(this.props.match.params.playlistId)
       .then((tracks) => {
         this.setState({ tracks })
       })
-      .catch(e => console.log("error catch ", e))
-  }
+      .catch(e => console.log("error catch ", e));
+  };
 
-  // Render the correlating media type for the link
+  // Render the correlating media type for the link using switch and case
 
   renderMedia() {
-    let service = ""
-    let currentTrack = this.state.tracks[this.state.selectedTrack]
+    let service = "";
+    let currentTrack = this.state.tracks[this.state.selectedTrack];
     if (currentTrack) {
       if (currentTrack.link.includes("youtube")) {
         service = "youtube"
@@ -62,8 +58,8 @@ export default class Playlist extends Component {
         service = "bitchute"
       } else {
         service = "nosupport"
-      }
-    }
+      };
+    };
     switch(service) {
       case "youtube":
         return <YTMedia track={currentTrack} />
@@ -73,20 +69,16 @@ export default class Playlist extends Component {
         return <p>this media type is not supported</p>
       default:
         return <p>this media type is not supported</p>
-    }
-  }
-
-  // Give selected track a number to be used in state
+    };
+  };
 
   selectTrack(trackNumber) {
-    this.setState({ selectedTrack: trackNumber})
-  }
-
-  // Handle deleting a track and its data from both the state and the database
+    this.setState({ selectedTrack: trackNumber});
+  };
 
   deleteTrack = (id) => {
-    let newTracks = [...this.state.tracks]
-    newTracks = newTracks.filter(track => track.id !== id)
+    let newTracks = [...this.state.tracks];
+    newTracks = newTracks.filter(track => track.id !== id);
     fetch(`${config.API_ENDPOINT}/playlists/deletetrack/${id}`, {
       method: 'DELETE',
       headers: {
@@ -96,10 +88,8 @@ export default class Playlist extends Component {
       .then(() => {
         this.setState({ tracks: newTracks })
       })
-      .catch(err => console.log(err))
-  }
-
-  // Render the individual tracks data into a list item component
+      .catch(err => console.log(err));
+  };
 
   renderTracks() {
     var allTracks = [];
@@ -113,31 +103,29 @@ export default class Playlist extends Component {
           id={this.state.tracks[i].id}
           select={() => this.selectTrack(i)}
         />);
-    }
+    };
     return (
       <div className="tracks">
         {allTracks}
       </div>
-    )
-  }
-
-  // Handle submitting a new tracks data to both the state and the database
+    );
+  };
 
   handleSubmitNewTrack = (ev) => {
     ev.preventDefault();
 
-    const { history } = this.state
+    const { history } = this.state;
 
     var newTrack = {
       title: this.state.title,
       artist: this.state.artist,
       link: this.state.link
-    }
+    };
 
-    this.setState({ link: '', title: '', artist: '' })
-    ev.target.link.value = ''
-    ev.target.title.value = ''
-    ev.target.artist.value = ''
+    this.setState({ link: '', title: '', artist: '' });
+    ev.target.link.value = '';
+    ev.target.title.value = '';
+    ev.target.artist.value = '';
 
     PlaylistApiService.postTrack(this.props.match.params.playlistId, newTrack.link, newTrack.title, newTrack.artist)
       .then((play) => {
@@ -145,20 +133,20 @@ export default class Playlist extends Component {
       })
       .catch(res => {
         this.setState({ error: res.error })
-      })
+      });
 
     if (newTrack.link != null) {
       var tempTrackList = this.state.tracks;
       tempTrackList.push(newTrack);
       this.setState({ tracks: tempTrackList });
-    }
-  }
+    };
+  };
 
   handleChange = (ev) => {
     ev.preventDefault();
     var variable = ev.target.name;
-    this.setState({ ...this.state, [variable]: ev.target.value })
-  }
+    this.setState({ ...this.state, [variable]: ev.target.value });
+  };
 
   render() {
     return (
@@ -206,6 +194,6 @@ export default class Playlist extends Component {
           © Coloratura
         </footer>
       </div>
-    )
-  }
-}
+    );
+  };
+};

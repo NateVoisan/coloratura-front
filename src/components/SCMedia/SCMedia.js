@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export default class SCMedia extends Component {
 
@@ -16,6 +16,6 @@ export default class SCMedia extends Component {
                     src={this.props.track.link}>
                 </iframe>
             </div>
-        )
-    }
-}
+        );
+    };
+};

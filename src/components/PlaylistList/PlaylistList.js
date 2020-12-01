@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import PlaylistApiService from '../../services/playlist-api-service'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import PlaylistApiService from '../../services/playlist-api-service';
+import { Link } from 'react-router-dom';
 import PlaylistContext from '../../contexts/PlaylistContext';
-import config from '../../config'
-import TokenService from '../../services/token-service'
+import config from '../../config';
+import TokenService from '../../services/token-service';
 
 export default class PlaylistList extends Component {
     constructor() {
@@ -12,20 +12,16 @@ export default class PlaylistList extends Component {
             id: '',
             name: '',
             playlists: []
-        }
-    }
+        };
+    };
     
-    // Get playlists for the currently signed in user
-
     componentDidMount() {
         PlaylistApiService.getPlaylists()
             .then((playlists) => {
                 this.setState({ ...this.state, playlists })
             })
-            .catch(e => console.log(e))
-    }
-
-    // Delete the playlist from the database and state
+            .catch(e => console.log(e));
+    };
 
     onDelete = (id) => {
         fetch(`${config.API_ENDPOINT}/playlists/deleteplaylist/${id}`, {
@@ -39,10 +35,8 @@ export default class PlaylistList extends Component {
                 newPlaylist = newPlaylist.filter(play => play.id !== id)
                 this.setState({ playlists: newPlaylist })
             })
-            .catch(err => { console.log(err) })
-    }
-
-    // Template for rendering a playlist in a contained component
+            .catch(err => { console.log(err) });
+    };
 
     renderPlaylists() {
         return this.state.playlists.map(playlist =>
@@ -56,14 +50,14 @@ export default class PlaylistList extends Component {
                         <h2>{playlist.name}</h2>
                     </Link>
                     <button onClick={() => this.onDelete(playlist.id)}>Delete</button>
-                </div></fieldset>)
-    }
+                </div></fieldset>);
+    };
 
     render() {
         const value = {
             id: this.state.id,
             name: this.state.name
-        }
+        };
         return (
             <PlaylistContext.Provider value={value} key={this.state.id}>
                 <div className='playlist-box' key={this.state.id}>
@@ -74,6 +68,6 @@ export default class PlaylistList extends Component {
                     © Coloratura
                 </footer>
             </PlaylistContext.Provider>
-        )
-    }
-}
+        );
+    };
+};

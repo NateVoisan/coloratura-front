@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import { PlaylistListProvider } from './contexts/PlaylistListContext'
-import { PlaylistProvider } from './contexts/PlaylistContext'
+import { PlaylistListProvider } from './contexts/PlaylistListContext';
+import { PlaylistProvider } from './contexts/PlaylistContext';
 
 
 ReactDOM.render(

@@ -4,8 +4,6 @@ import IdleService from './idle-service'
 
 const AuthApiService = {
 
-  // Handle posting the sign in information to the server and checking credentials
-
   postSignin({user_name, password}) {
     return fetch(`${config.API_ENDPOINT}/auth/signin`, {
       method: 'POST',
@@ -29,8 +27,6 @@ const AuthApiService = {
       })
   },
 
-  // Post the user's data on new user sign up
-
   postUser(user) {
     return fetch(`${config.API_ENDPOINT}/users`, {
       method: 'POST',
@@ -45,8 +41,6 @@ const AuthApiService = {
           : res.json()
       )
   },
-
-  // Post refresh token when expired
 
   postRefreshToken() {
     return fetch(`${config.API_ENDPOINT}/refresh`, {
@@ -71,6 +65,6 @@ const AuthApiService = {
         console.log(err)
       })
   }
-}
+};
 
 export default AuthApiService

@@ -1,13 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export default class PlaylistItem extends Component {
     static defaultProps = {
         title: '',
         artist: '',
         id: ''
-    }
-
-    // Template for a track item on the page
+    };
 
     render() {
         return (
@@ -18,6 +16,6 @@ export default class PlaylistItem extends Component {
                     <button onClick={() => this.props.delete(this.props.id)}>Delete</button>
                 </fieldset>
             </div>
-        )
-    }
-}
+        );
+    };
+};

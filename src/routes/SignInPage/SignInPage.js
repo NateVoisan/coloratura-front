@@ -9,16 +9,14 @@ export default class SignInPage extends Component {
         history: {
             push: () => { },
         },
-    }
-
-    // Handle receiving the correct auth token for sign in success
+    };
 
     handleSignInSuccess = (auth, token) => {
-        const { location, history } = this.props
-        const destination = (location.state || {}).from || '/'
-        history.push(destination)
-        auth.setToken(token)
-    }
+        const { location, history } = this.props;
+        const destination = (location.state || {}).from || '/';
+        history.push(destination);
+        auth.setToken(token);
+    };
 
     render() {
         return (
@@ -29,6 +27,6 @@ export default class SignInPage extends Component {
                     </Section>
                 )}
             </AuthContext.Consumer>
-        )
-    }
-}
+        );
+    };
+};

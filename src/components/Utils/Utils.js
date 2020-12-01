@@ -1,27 +1,27 @@
-import React from 'react'
-import './Utils.css'
+import React from 'react';
+import './Utils.css';
 
 // Quick and easy to use utlities for html
 
 export function Hyph() {
     return <span className='Hyph'>{' - '}</span>
-}
+};
 
 export function Button({ className, ...props }) {
     return <button className={['Button', className].join(' ')} {...props} />
-}
+};
 
 export function Input({ className, ...props }) {
     return (
         <input className={['Input', className].join(' ')} {...props} />
-    )
-}
+    );
+};
 
 export function Required({ className, ...props }) {
     return (
         <span className={['Required', className].join(' ')} {...props}>&#42;</span>
-    )
-}
+    );
+};
 
 export function Section({ className, list, ...props }) {
     const classes = [
@@ -31,5 +31,5 @@ export function Section({ className, list, ...props }) {
     ].filter(Boolean).join(' ')
     return (
         <section className={classes} {...props} />
-    )
-}
+    );
+};

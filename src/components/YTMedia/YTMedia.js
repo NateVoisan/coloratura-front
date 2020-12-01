@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export default class YTMedia extends Component {
 
@@ -7,7 +7,7 @@ export default class YTMedia extends Component {
 
     urlFix = () => {
         return this.props.track.link.replace(/watch\?v=/,'embed/')
-    }
+    };
     
     render() {
         return (
@@ -23,6 +23,6 @@ export default class YTMedia extends Component {
                 </iframe>
             </div>
             </div>
-        )
-    }
-}
+        );
+    };
+};

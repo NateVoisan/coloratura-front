@@ -1,25 +1,25 @@
-import React, { Component } from 'react'
-import PlaylistApiService from '../../services/playlist-api-service'
-import { Button, Input, Required } from '../Utils/Utils'
-import AuthContext from '../../contexts/AuthContext'
+import React, { Component } from 'react';
+import PlaylistApiService from '../../services/playlist-api-service';
+import { Button, Input, Required } from '../Utils/Utils';
+import AuthContext from '../../contexts/AuthContext';
 
 export default class CreatePlaylist extends Component {
 
     // Grab the information from the input form and send it to the API service
-    // that posts that data into the d
+    // that posts that data into the database
 
     handleCreatePlaylist = (event, auth) => {
-        event.preventDefault()
-        const { playlist_name } = event.target
-        const { history } = this.props
+        event.preventDefault();
+        const { playlist_name } = event.target;
+        const { history } = this.props;
         PlaylistApiService.postPlaylist(playlist_name.value)
             .then((play) => {
-                history.push(`/playlist/${play.id}`)
+                history.push(`/playlist/${play.id}`);
             })
             .catch(res => {
-                this.setState({ error: res.error })
-            })
-    }
+                this.setState({ error: res.error });
+            });
+    };
 
     render() {
         return (
@@ -47,6 +47,6 @@ export default class CreatePlaylist extends Component {
                     </div>
                 )}
             </AuthContext.Consumer>
-        )
-    }
-}
+        );
+    };
+};

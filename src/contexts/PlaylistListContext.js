@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 const PlaylistListContext = React.createContext({
     playlistList: [],
@@ -6,11 +6,9 @@ const PlaylistListContext = React.createContext({
     setError: () => {},
     clearError: () => {},
     setPlaylistList: () => {},
-})
+});
 
 export default PlaylistListContext
-
-// Numerous simple functions being used for users, playlists, tracks, errors, etc
 
 export class PlaylistListProvider extends Component {
     state = {
@@ -20,16 +18,16 @@ export class PlaylistListProvider extends Component {
 
     setPlaylistList = playlistList => {
         this.setState({ playlistList })
-    }
+    };
 
     setError = error => {
         console.error(error)
         this.setState({ error })
-    }
+    };
 
     clearError = () => {
         this.setState({ error: null })
-    }
+    };
 
     render() {
         const value = {
@@ -38,11 +36,11 @@ export class PlaylistListProvider extends Component {
             setError: this.setError,
             clearError: this.clearError,
             setPlaylistList: this.setPlaylistList,
-        }
+        };
         return (
             <PlaylistListContext.Provider value={value}>
                 {this.props.children}
             </PlaylistListContext.Provider>
-        )
-    }
-}
+        );
+    };
+};

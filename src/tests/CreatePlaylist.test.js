@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import CreatePlaylist from '../components/CreatePlaylist/CreatePlaylist';
 
-it('renders without crashing', () => {
+it('renders Create without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
         <BrowserRouter>

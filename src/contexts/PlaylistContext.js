@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export const nullPlaylist = {
     creator: {},
     tags: [],
-}
+};
 
 const PlaylistContext = React.createContext({
     id: null,
@@ -19,11 +19,9 @@ const PlaylistContext = React.createContext({
     addTrack: () => {},
     clearTrack: () => {},
     changePlaces: () => {}
-})
+});
 
 export default PlaylistContext
-
-// Numerous simple functions being used for users, playlists, tracks, errors, etc
 
 export class PlaylistProvider extends Component {
     state = {
@@ -35,37 +33,37 @@ export class PlaylistProvider extends Component {
 
     setID = id => {
         this.setState({ id })
-    }
+    };
 
     setError = error => {
         console.error(error)
         this.setState({ error })
-    }
+    };
 
     clearError = () => {
         this.setState({ error: null })
-    }
+    };
 
     setPlaylist = playlist => {
         this.setState({ playlist })
-    }
+    };
 
     setTracks = tracks => {
         this.setState({ tracks })
-    }
+    };
 
     setSelectedTrack = (selectedTrack) => {
         this.setState({ selectedTrack })
-    }
+    };
 
     clearPlaylist = () => {
         this.setPlaylist(nullPlaylist)
         this.setTracks([])
-    }
+    };
 
     clearTrack = (id) => {
         this.setState({ tracks: this.state.tracks.filter(track => id !== track.id) })
-    }
+    };
 
     changePlaces(pos, dir) {
         var tempTrackList = this.state.tracks;
@@ -73,14 +71,14 @@ export class PlaylistProvider extends Component {
         tempTrackList[pos] = this.state.tracks[pos + dir];
         tempTrackList[pos + dir] = tempTrack;
         this.setState({ tracks: tempTrackList })
-      }
+      };
 
     addTrack = track => {
         this.setTracks([
             ...this.state.tracks,
             track
-        ])
-    }
+        ]);
+    };
 
     render() {
         const value = {
@@ -97,11 +95,11 @@ export class PlaylistProvider extends Component {
             clearTrack: this.clearTrack,
             setSelectedTrack: this.setSelectedTrack,
             changePlaces: this.changePlaces
-        }
+        };
         return (
             <PlaylistContext.Provider value={value}>
                 {this.props.children}
             </PlaylistContext.Provider>
-        )
-    }
-}
+        );
+    };
+};

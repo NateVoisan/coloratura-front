@@ -1,31 +1,29 @@
-import React, { Component } from 'react'
-import PlaylistContext from '../../contexts/PlaylistContext'
-import PlaylistApiService from '../../services/playlist-api-service'
-import { Button, Input } from '../Utils/Utils'
+import React, { Component } from 'react';
+import PlaylistContext from '../../contexts/PlaylistContext';
+import PlaylistApiService from '../../services/playlist-api-service';
+import { Button, Input } from '../Utils/Utils';
 
 export default class LinkForm extends Component {
-    static contextType = PlaylistContext
+    static contextType = PlaylistContext;
 
     static defaultProps = {
         link: "",
         title: "",
         artist: ""
-    }
-
-    // Handle posting a track and its data to the database and props
+    };
 
     handleSubmit = event => {
-        console.log('should be submitting link')
-        event.preventDefault()
-        const { playlist } = this.context
-        const { link } = event.target
+        console.log('should be submitting link');
+        event.preventDefault();
+        const { playlist } = this.context;
+        const { link } = event.target;
         PlaylistApiService.postTrack(playlist.id, link.value)
             .then(this.context.addTrack)
             .then(() => {
                 link.value = ''
             })
-            .catch(this.context.setError)
-    }
+            .catch(this.context.setError);
+    };
 
     render() {
         return (
@@ -59,9 +57,6 @@ export default class LinkForm extends Component {
                     </form>
                 </div>
             </PlaylistContext.Consumer>
-        )
-    }
-
-
-
-}
+        );
+    };
+};

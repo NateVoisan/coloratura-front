@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import AuthContext from '../../contexts/AuthContext'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import AuthContext from '../../contexts/AuthContext';
 
 const Home = () => {
     return (
@@ -8,8 +8,8 @@ const Home = () => {
             {(auth) => (
                 <div>
                     <header role="banner" className='homepage'>
-                        <p className="description">: elaborate embellishment in vocal music
-broadly : music with ornate figuration</p>
+                        <p className="description">: elaborate embellishment in vocal 
+                            music broadly : music with ornate figuration</p>
                         <p className="slogan">Playlists for anything.</p>
 
                         {auth.token
@@ -30,7 +30,7 @@ broadly : music with ornate figuration</p>
                         At the moment you are only able to make playlists through a complicated process within a single website. What if you wanted to use links
                         from many other websites but contained within the same playlist? Coloratura confronts this problem offering a simple and easy to use
                         application that can allow the user to sketch a playlist using links to various media sites.
-                    Currently only Youtube and Bitchute are supported media types for the onboard media player. Additions of Soundcloud, Spotify, and Vimeo will be available in the future.</p>
+                        Currently only Youtube and Bitchute are supported media types for the onboard media player. Additions of Soundcloud, Spotify, and Vimeo will be available in the future.</p>
                     </section>
 
                     <footer className='footer'>
@@ -38,9 +38,8 @@ broadly : music with ornate figuration</p>
                     </footer>
                 </div>
             )}
-
         </AuthContext.Consumer>
     );
-}
+};
 
 export default Home;

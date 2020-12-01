@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export default class BCMedia extends Component {
 
@@ -6,8 +6,8 @@ export default class BCMedia extends Component {
     // push the new url into the iframe embed code
 
     urlFix = () => {
-        return this.props.track.link.replace(/video/,'embed')
-    }
+        return this.props.track.link.replace(/video/,'embed');
+    };
 
     render() {
         console.log(this.props.track.link.replace(/video/,'embed'))
@@ -21,6 +21,6 @@ export default class BCMedia extends Component {
                     src={this.urlFix()}>
                 </iframe>
             </div>
-        )
-    }
-}
+        );
+    };
+};

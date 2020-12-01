@@ -1,21 +1,19 @@
-import React, { Component } from 'react'
-import TokenService from '../../services/token-service'
-import AuthApiService from '../../services/auth-api-service.js'
-import { Button, Input, Required } from '../Utils/Utils'
+import React, { Component } from 'react';
+import TokenService from '../../services/token-service';
+import AuthApiService from '../../services/auth-api-service.js';
+import { Button, Input, Required } from '../Utils/Utils';
 
 export default class SignIn extends Component {
     static defaultProps = {
         onSigninSuccess: () => { }
-    }
+    };
 
-    state = { error: null }
-
-    // Handle submitting user credentials and using JWT to check their validity
+    state = { error: null };
 
     handleSubmitJwtAuth = ev => {
-        ev.preventDefault()
-        this.setState({ error: null })
-        const { user_name, password } = ev.target
+        ev.preventDefault();
+        this.setState({ error: null });
+        const { user_name, password } = ev.target;
         AuthApiService.postSignin({
             user_name: user_name.value,
             password: password.value,
@@ -28,8 +26,8 @@ export default class SignIn extends Component {
             })
             .catch(res => {
                 this.setState({ error: res.error })
-            })
-    }
+            });
+    };
 
     render() {
         const { error } = this.state
@@ -62,5 +60,5 @@ export default class SignIn extends Component {
                 </section>
             </div >
         );
-    }
-}
+    };
+};

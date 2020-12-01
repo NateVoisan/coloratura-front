@@ -24,6 +24,6 @@ const IdleService = {
             document.removeEventListener(event, IdleService.resetIdleTimer, true)
             )
     }
-}
+};
 
 export default IdleService

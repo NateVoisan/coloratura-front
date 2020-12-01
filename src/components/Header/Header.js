@@ -1,23 +1,18 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { Hyph } from '../Utils/Utils'
-import TokenService from '../../services/token-service'
-import IdleService from '../../services/idle-service'
-import AuthContext from '../../contexts/AuthContext'
-// import './Header.css'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Hyph } from '../Utils/Utils';
+import TokenService from '../../services/token-service';
+import IdleService from '../../services/idle-service';
+import AuthContext from '../../contexts/AuthContext';
 
 export default class Header extends Component {
 
-    // On sign out click handle clearing token
-
     handleSignOutClick = (auth) => {
-        auth.setToken()
-        TokenService.clearAuthToken()
-        TokenService.clearCallbackBeforeExpiry()
-        IdleService.unRegisterIdleResets()
-    }
-
-    // Render sign out link when already signed in
+        auth.setToken();
+        TokenService.clearAuthToken();
+        TokenService.clearCallbackBeforeExpiry();
+        IdleService.unRegisterIdleResets();
+    };
 
     renderSignOutLink(auth) {
         return (
@@ -28,10 +23,8 @@ export default class Header extends Component {
                     style={{textDecoration:'none'}}
                     >Sign Out</Link>
             </div>
-        )
-    }
-
-    // Render sign up and sign in links when not signed in
+        );
+    };
 
     renderSignInLink() {
         return (
@@ -46,10 +39,8 @@ export default class Header extends Component {
                     style={{textDecoration:'none'}}
                     >Sign In</Link>
             </div>
-        )
-    }
-
-    // Render home link only when not on home page already
+        );
+    };
 
     renderHomeLink() {
         return (
@@ -60,9 +51,12 @@ export default class Header extends Component {
                         {' '}
                         Coloratura
                 </Link>
-            </h1>)
-    }
+            </h1>);
+    };
 
+    // Ternary function being used in the render function to determine what type of nav
+    // links will show depending on the page as well as the user being logged in or not
+    
     render() {
         return (
             <AuthContext.Consumer>
@@ -79,6 +73,6 @@ export default class Header extends Component {
                     </header>
                 )}
             </AuthContext.Consumer>
-        )
-    }
-}
+        );
+    };
+};

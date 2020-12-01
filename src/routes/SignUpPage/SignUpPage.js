@@ -8,15 +8,15 @@ export default class SignUpPage extends Component {
         history: {
             push: () => { },
         },
-    }
+    };
 
     // Handle receiving the correct auth token for sign in success
 
     handleSignUpSuccess = (auth, token) => {
-        const { history } = this.props
-        auth.setToken(token)
-        history.push('/playlists')
-    }
+        const { history } = this.props;
+        auth.setToken(token);
+        history.push('/playlists');
+    };
 
     render() {
         return (
@@ -27,6 +27,6 @@ export default class SignUpPage extends Component {
                     </Section>
                 )}
             </AuthContext.Consumer>
-        )
-    }
-}
+        );
+    };
+};

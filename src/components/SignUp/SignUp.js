@@ -1,25 +1,23 @@
-import React, { Component } from 'react'
-import { Button, Input, Required } from '../Utils/Utils'
-import AuthApiService from '../../services/auth-api-service'
-import AuthContext from '../../contexts/AuthContext'
+import React, { Component } from 'react';
+import { Button, Input, Required } from '../Utils/Utils';
+import AuthApiService from '../../services/auth-api-service';
+import AuthContext from '../../contexts/AuthContext';
 
 export default class SignUp extends Component {
     static defaultProps = {
         onSignUpSuccess: () => { }
-    }
+    };
 
-    state = { error: null }
-
-    // Handle submitting a new user's data into the database with tokens
+    state = { error: null };
 
     handleSubmit = (ev, auth) => {
-        ev.preventDefault()
-        const { user_name, password } = ev.target
+        ev.preventDefault();
+        const { user_name, password } = ev.target;
         const user = {
             user_name: user_name.value,
             password: password.value
-        }
-        this.setState({ error: null })
+        };
+        this.setState({ error: null });
         AuthApiService.postUser(user)
             .then(data => {
                 user_name.value = ''
@@ -35,8 +33,8 @@ export default class SignUp extends Component {
             })
             .catch(res => {
                 this.setState({ error: res.error })
-            })
-    }
+            });
+    };
 
     render() {
         const { error } = this.state
@@ -73,5 +71,5 @@ export default class SignUp extends Component {
                 )}
             </AuthContext.Consumer>
         );
-    }
-}
+    };
+};
